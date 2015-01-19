@@ -11,10 +11,7 @@ class Ruby2048
 
   def initialize
     @board = 4.times.map{ 4.times.map{ nil } }
-
     @board[rand(4)][rand(4)] = 2 while @board.flatten.select{ |x| x == 2 }.size < 2
-
-    @board = [[2,2,2,nil],[nil,nil,nil,nil],[nil,nil,nil,nil],[nil,nil,nil,nil]]
   end
 
   def move(type)
