@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'ap'
 require 'io/console'
 
 class Ruby2048
