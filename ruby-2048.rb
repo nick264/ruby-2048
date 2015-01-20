@@ -1,5 +1,3 @@
-require 'io/console'
-
 class Ruby2048
 
   MOVES = {
@@ -85,10 +83,16 @@ class Ruby2048
   end
 
   def play!
+    runGame() do
+      getmove()
+    end
+  end
+
+  def runGame(&block)
     showBoard()
 
     while check().nil?
-      move(getmove())
+      move(block.call())
       showBoard()
     end
 
@@ -96,6 +100,14 @@ class Ruby2048
       puts "YOU WIN!!!!!"
     else
       puts "GAME OVER, MAN!"
+    end
+  end
+
+  def playAI!
+    runGame() do
+      # AI logic goes here
+      sleep(0.03)
+      MOVES.keys.sample
     end
   end
 
@@ -118,6 +130,8 @@ class Ruby2048
   end
 
   def getmove
+    require 'io/console'
+
     valid_moves = {}
 
     while valid_moves.empty?
