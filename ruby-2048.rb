@@ -125,18 +125,18 @@ class Ruby2048
   def winningMove(depth=3,board=@board)
     # Recursively calculates branching possibilities for various moves and random potential board states (i.e. the '2' could appear anywhere)
     # Scores the board state in the terminal node on each path
-    # Averages the scores by first move, and picks the move with the highest average
+    # Picks the series of moves leading to the highest average terminal node score
+    # Returns the first move in the series along with the score
 
     # POTENTIAL IMPROVEMENTS:
-    # 1. can be much faster!  currently takes ~4 minutes to run through a single game
+    # 1. can be much faster!  currently takes ~4 minutes to run through a single game.  that would let us increase depth and possibilityCount
     # 2. should try more random possibilities (currently 4), or even better, enumerate some/all the possibilities to avoid repeats
     # 3. should probably capture the risk better.  e.g. take a move with a worse average sometimes if it has sufficiently lower variance
     # 4. it might be good to boost the value of being on an 'edge' of the board.  or being adjacent to numbers that are similar
-    #  i.e. better to be on an e  dge and two moves away than internal and two moves away.  i think?
+    #  i.e. better to be on an edge and two moves away than internal and two moves away.  i think?
     #     e.g. - 128 256 512          -  -  256 512               
     #          -  -   -   -    >>     -  -  128  -         
-    #                 ......                 ......         
-
+    #                 ......                 ......        
 
     # returns array:
     # [ WINNING_MOVE, SCORE_OF_BOARD_STATE_AT_TERMINAL_DEPTH ]
